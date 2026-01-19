@@ -516,7 +516,7 @@ brew "pstree"
 brew "pv"
 brew "qt@5"
 brew "qcachegrind"
-brew "trimage"
+# brew "trimage"
 
 # Utilities
 brew "go-task"
