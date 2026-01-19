@@ -1,0 +1,12 @@
+name: python-tox
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .tox
+  fileTrigger: tox.ini
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/python-tox.yaml

@@ -1,0 +1,33 @@
+name: node
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths:
+  - .bun
+  - node_modules
+  - .cache
+  - .pnpm-store
+  - dist
+  - build
+  - out
+  - .next
+  - coverage
+  - .trunk
+  - .atmos
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .bun
+    - dist
+    - build
+    - out
+    - .next
+    - coverage
+    - .trunk
+    - .atmos
+    - node_modules
+    - .cache
+    - .pnpm-store
+  fileTrigger: package.json
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/node.yaml

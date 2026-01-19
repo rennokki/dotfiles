@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2154
+
+sync_home_file() {
+    local mirrored_path="$1"
+    echo "Syncing $mirrored_path to $HOME/$mirrored_path"
+    ln -fs "$DOTFILES_DIR/_HOME/$mirrored_path" "$HOME/$mirrored_path"
+}
+
+sync_zdotdir_file() {
+    local mirrored_path="$1"
+    echo "Syncing $mirrored_path to $ZDOTDIR/$mirrored_path"
+    ln -fs "$DOTFILES_DIR/_ZDOTDIR/$mirrored_path" "$ZDOTDIR/$mirrored_path"
+}
+
+sync_home_dir() {
+    local mirrored_path="$1"
+    echo "Syncing $mirrored_path to $HOME/$mirrored_path"
+    ln -fs "$DOTFILES_DIR/_HOME/$mirrored_path/" "$HOME/$mirrored_path"
+}
+
+HOME_DIR_FILES=(
+    ".aliases"
+    ".completions-bash"
+    ".completions-zsh"
+    ".bash_profile"
+    ".bashrc"
+    ".curlrc"
+    ".editorconfig"
+    ".envrc"
+    ".exports"
+    ".gitconfig"
+    ".gitignore"
+    ".inputrc"
+    ".mackup.cfg"
+    ".nuxtrc"
+    ".p10k.zsh"
+    ".profile"
+    ".psqlrc"
+    ".screenrc"
+    ".shellcheckrc"
+    ".shellrc"
+    ".sqliterc"
+    ".terraformrc"
+    ".tmbliss.json"
+    ".wgetrc"
+)
+
+ZDOTDIR_FILES=(
+    ".zshrc"
+    ".zlogin"
+    ".zshenv"
+)
+
+DIRS=(
+    ".heptapod/rules"
+    ".mackup"
+)
+
+for file in "${HOME_DIR_FILES[@]}"; do
+    sync_home_file "$file"
+done
+
+for file in "${ZDOTDIR_FILES[@]}"; do
+    sync_zdotdir_file "$file"
+done
+
+# SSH
+sync_home_file ".ssh/config"
+sync_home_file ".ssh/config.local"
+
+# Karabiner
+sync_home_file ".config/karabiner/karabiner.json"
+
+# Orbstack
+sync_home_file ".orbstack/config/docker.json"
+sync_home_file ".orbstack/vmconfig.json"
+
+# Cursor
+sync_home_file ".cursor/mcp.json"
+
+for dir in "${DIRS[@]}"; do
+    sync_home_dir "$dir"
+done

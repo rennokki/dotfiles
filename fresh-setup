@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This is a script to install the dotfiles on a new machine.
+# For now, we do not have any installed dependencies, so we will use Taskfile to install them.
+
+# Install Taskfile
+sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
+
+task setup:fresh

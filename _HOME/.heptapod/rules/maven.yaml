@@ -1,0 +1,12 @@
+name: maven
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - target
+  fileTrigger: pom.xml
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/maven.yaml

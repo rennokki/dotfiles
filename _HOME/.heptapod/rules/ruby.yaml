@@ -1,0 +1,12 @@
+name: ruby
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - vendor
+  fileTrigger: Gemfile
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/ruby.yaml

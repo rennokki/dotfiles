@@ -1,0 +1,13 @@
+name: python-venv
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .venv
+    - venv
+  fileTrigger: requirements.txt
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/python-venv.yaml

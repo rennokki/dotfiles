@@ -1,0 +1,12 @@
+name: wrangler-package
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .wrangler
+  fileTrigger: package.json
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/wrangler-package.yaml

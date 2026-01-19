@@ -1,0 +1,13 @@
+name: gradle-kotlin
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .gradle
+    - gradle
+  fileTrigger: build.gradle.kts
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/gradle-kt.yaml

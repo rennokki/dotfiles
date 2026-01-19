@@ -1,0 +1,81 @@
+name: osx
+enabled: true
+searchPaths: []
+ignorePaths: []
+ruleType: list
+ruleSettings:
+  subRules:
+    - enabled: true
+      ignorePaths: []
+      name: library
+      ruleSettings:
+        handleWith: ignore
+        path: ~/Library
+      ruleType: global
+      searchPaths: []
+    - enabled: true
+      ignorePaths: []
+      name: downloads
+      ruleSettings:
+        handleWith: exclude
+        path: ~/Downloads
+      ruleType: global
+      searchPaths: []
+    - enabled: true
+      ignorePaths: []
+      name: trash
+      ruleSettings:
+        handleWith: exclude
+        path: ~/.Trash
+      ruleType: global
+      searchPaths: []
+    - enabled: true
+      ignorePaths: []
+      name: dot-npm
+      ruleSettings:
+        handleWith: exclude
+        path: ~/.npm
+      ruleType: global
+      searchPaths: []
+    - enabled: true
+      ignorePaths: []
+      name: dot-pulumi
+      ruleSettings:
+        handleWith: exclude
+        path: ~/.pulumi
+      ruleType: global
+      searchPaths: []
+    - enabled: true
+      ignorePaths: []
+      name: go
+      ruleSettings:
+        handleWith: exclude
+        path: ~/go/pkg
+      ruleType: global
+      searchPaths: []
+    - enabled: true
+      ignorePaths: []
+      name: dot-cache
+      ruleSettings:
+        handleWith: exclude
+        path: ~/.cache
+      ruleType: global
+      searchPaths: []
+    - enabled: true
+      ignorePaths: []
+      name: dot-claude
+      ruleSettings:
+        handleWith: exclude
+        path: ~/.claude
+      ruleType: global
+      searchPaths: []
+    - enabled: true
+      ignorePaths: []
+      name: dot-bun
+      ruleSettings:
+        handleWith: exclude
+        path: ~/.bun
+      ruleType: global
+      searchPaths: []
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/osx.yaml

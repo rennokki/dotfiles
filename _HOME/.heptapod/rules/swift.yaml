@@ -1,0 +1,12 @@
+name: swift
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .build
+  fileTrigger: Package.swift
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/swift.yaml

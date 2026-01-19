@@ -1,0 +1,12 @@
+name: carthage
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - Carthage
+  fileTrigger: Cartfile
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/carthage.yaml

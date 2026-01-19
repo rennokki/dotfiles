@@ -1,0 +1,12 @@
+name: php
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - vendor
+  fileTrigger: composer.json
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/php.yaml

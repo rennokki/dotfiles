@@ -1,0 +1,46 @@
+# shellcheck disable=SC2148
+# Environment
+export EDITOR="nano"
+# export PAGER="less"
+# export BROWSER="chrome"
+
+# Enable persistent REPL history for `node`.
+export NODE_REPL_HISTORY=~/.node_history;
+
+# Allow 32³ entries; the default is 1000.
+export NODE_REPL_HISTORY_SIZE='32768';
+
+# Use sloppy mode by default, matching web browsers.
+export NODE_REPL_MODE='sloppy';
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8';
+
+# Increase Bash history size. Allow 32³ entries; the default is 500.
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL='ignoreboth';
+
+###################################################
+
+# Infrastructure
+export FLYCTL_INSTALL="$HOME/.fly"
+
+# Kubernetes
+export KUBECONFIG="${HOME}/.kube/config"
+
+# Tools
+# shellcheck disable=SC2154
+export ASDF_DIR="${HOMEBREW_PREFIX}/opt/asdf"
+
+# PHP
+export HERD_PHP_82_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/82/"
+export HERD_PHP_84_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/84/"
+
+# Node.js
+export PNPM_HOME="$HOME/Library/pnpm"
+export BUN_INSTALL="$HOME/.bun"
+
+# Golang
+export GOPATH="$HOME/go"

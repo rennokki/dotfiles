@@ -1,0 +1,23 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/out": true,
+    "**/coverage": true,
+    "**/tmp": true,
+    "**/vendor": true,
+    "**/public/vendor": true,
+    "**/public/css": true,
+    "**/public/js": true,
+    "**/public/mix-manifest.json": true,
+    "**/public/css/app.css": true,
+    "**/public/js/app.js": true,
+    "**/*.zwc": true,
+    "**/*.zwc.old": true,
+    "**/*.zcompdump": true,
+    "**/*.zbackup": true,
+    "**/*.zbackup*": true
+  }
+}

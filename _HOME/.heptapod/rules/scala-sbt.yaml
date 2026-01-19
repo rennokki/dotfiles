@@ -1,0 +1,13 @@
+name: scala-sbt
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - target
+    - project/target
+  fileTrigger: build.sbt
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/scala-sbt.yaml

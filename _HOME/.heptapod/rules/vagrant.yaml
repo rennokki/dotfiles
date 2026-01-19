@@ -1,0 +1,12 @@
+name: vagrant
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .vagrant
+  fileTrigger: Vagrantfile
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/vagrant.yaml

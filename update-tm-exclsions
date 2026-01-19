@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2154
+
+find "${HOME}/Desktop" -name node_modules -maxdepth 4 -not -path 'node_modules/*/node_modules/*' | xargs -0 tmutil addexclusion
+find "${HOME}/Desktop" -name node_modules -maxdepth 4 -not -path 'node_modules/*/node_modules/*' | xargs -0 tag --add 'Skip Backup'

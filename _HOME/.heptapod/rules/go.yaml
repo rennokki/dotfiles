@@ -1,0 +1,12 @@
+name: go
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - vendor
+  fileTrigger: go.mod
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/go.yaml

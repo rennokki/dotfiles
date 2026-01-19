@@ -1,0 +1,13 @@
+name: python-pypi
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - dist
+    - build
+  fileTrigger: setup.py
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/python-pypi.yaml

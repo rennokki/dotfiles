@@ -1,0 +1,14 @@
+name: dart
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .dart_tool
+    - .packages
+    - build
+  fileTrigger: pubspec.yaml
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/dart.yaml

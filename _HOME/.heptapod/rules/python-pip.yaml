@@ -1,0 +1,13 @@
+name: python-pip
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .venv
+    - venv
+  fileTrigger: Pipfile
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/python-pip.yaml

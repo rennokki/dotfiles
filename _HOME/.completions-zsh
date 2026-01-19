@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+# obsidian-cli
+# load_completion "obsidian-cli" "$(obsidian-cli completion zsh)"
+
+# atmo
+# load_completion "atmos" "$(atmos completion zsh)"
+
+# fnm
+# eval "$(fnm env --use-on-cd)"
+# load_completion "fnm" "$(fnm completions --shell zsh)"
+
+# speakeasy
+# load_completion "speakeasy" "$(speakeasy completion zsh)"
+
+# flyctl
+# load_completion "flyctl" "$(flyctl completion zsh)"
+
+# pulumi
+# load_completion "pulumi" "$(pulumi completion zsh)"

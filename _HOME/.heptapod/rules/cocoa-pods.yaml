@@ -1,0 +1,12 @@
+name: CocoaPods
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - Pods
+  fileTrigger: Podfile
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/cocoa-pods.yaml

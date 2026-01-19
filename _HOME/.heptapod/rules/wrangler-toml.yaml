@@ -1,0 +1,12 @@
+name: wrangler-toml
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .wrangler
+  fileTrigger: wrangler.toml
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/wrangler-toml.yaml

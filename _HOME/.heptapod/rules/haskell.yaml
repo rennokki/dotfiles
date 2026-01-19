@@ -1,0 +1,12 @@
+name: haskell
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .stack-work
+  fileTrigger: stack.yaml
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/haskell.yaml

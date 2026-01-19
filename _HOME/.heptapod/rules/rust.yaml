@@ -1,0 +1,12 @@
+name: rust
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - target
+  fileTrigger: Cargo.toml
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/rust.yaml

@@ -1,0 +1,6 @@
+{
+  "cpu": 1,
+  "k8s.expose_services": true,
+  "memory_mib": 1024,
+  "rosetta": false
+}

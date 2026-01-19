@@ -1,0 +1,13 @@
+name: gradle
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - .gradle
+    - gradle
+  fileTrigger: build.gradle
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/gradle.yaml

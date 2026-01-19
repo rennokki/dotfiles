@@ -1,0 +1,12 @@
+name: bower
+enabled: true
+searchPaths:
+  - "~"
+ignorePaths: []
+ruleType: file-trigger
+ruleSettings:
+  excludePaths:
+    - bower_components
+  fileTrigger: bower.json
+subrules: []
+filename: /Users/rennokki/.heptapod/rules/bower.yaml

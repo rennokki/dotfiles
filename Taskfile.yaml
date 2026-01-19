@@ -1,0 +1,101 @@
+version: "3"
+
+tasks:
+  brewfile:check:
+    desc: Check the status of the Brewfile.
+    cmd: brew bundle check --file=./Brewfile --verbose
+
+  brewfile:install:
+    desc: Install Brewfile dependencies.
+    cmds:
+      - brew bundle install --file=./Brewfile --verbose
+      - brew bundle install --upgrade --file=./Brewfile --verbose
+      - brew cleanup --verbose
+
+  update:symlinks:
+    desc: Update the symlinks for the dotfiles.
+    prompt: Are you sure you want to update the symlinks?
+    cmds:
+      - chmod +x ./update-symlinks
+      - ./update-symlinks
+
+  update:all:
+    desc: For general maintenance tasks, like updating symlinks, updating dependencies, etc.
+    cmds:
+      - task: update:symlinks
+      - task: brewfile:install
+
+  setup:autocompletions:
+    cmds:
+      - cmd: |
+          # Add tab completion for many Bash commands
+          if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+            # Ensure existing Homebrew v1 completions continue to work
+            export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
+            source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
+          elif [ -f /etc/bash_completion ]; then
+            source /etc/bash_completion;
+          fi;
+      - cmd: |
+          # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+          [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+      - cmd: |
+          # Add tab completion for `defaults read|write NSGlobalDomain`
+          # You could just use `-g` instead, but I like being explicit
+          complete -W "NSGlobalDomain" defaults;
+      - cmd: |
+          # Add `killall` tab completion for common apps
+          complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+  install:xcode:
+    desc: Install Xcode Command Line Tools.
+    status:
+      - "! xcode-select -p &>/dev/null"
+    internal: true
+    cmds:
+      - echo "Xcode Command Line Tools not found. Installing..."
+      - xcode-select --install
+
+  install:oh-my-zsh:
+    desc: Install Oh My Zsh.
+    status:
+      - "! command_exists omz"
+    internal: true
+    cmds:
+      - echo "Oh My Zsh not found. Installing..."
+      - /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+
+  install:homebrew:
+    desc: Install Homebrew.
+    status:
+      - "! command_exists brew"
+    internal: true
+    cmds:
+      - echo "Homebrew not found. Installing..."
+      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+      - eval "$(/opt/homebrew/bin/brew shellenv)"
+      - brew update
+      - brew tap homebrew/bundle
+
+  restore:mackup:
+    desc: Restore the Mackup configuration.
+    cmds:
+      - mackup restore
+
+  setup:fresh:
+    desc: Setup the dotfiles on a fresh machine.
+    prompt: Are you sure you want to install the dotfiles on this fresh machine?
+    cmds:
+      - task: install:xcode
+      - task: install:homebrew
+      - task: restore:mackup
+      - task: install:oh-my-zsh
+      - task: brew:install
+      - task: update-symlinks
+
+  clear:cache:
+    desc: Clear the system cache.
+    cmds:
+      - pnpm cache delete
+      - npm cache clean --force

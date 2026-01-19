@@ -1,0 +1,4 @@
+{
+  "paths": ["/Users/rennokki/Desktop"],
+  "allowlist_glob": ["**/.env", "**/.env.*", "**/node_modules", "**/vendor"]
+}
