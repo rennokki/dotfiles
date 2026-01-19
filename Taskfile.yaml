@@ -93,7 +93,7 @@ tasks:
     cmds:
       - task: fresh-install:xcode
       - task: fresh-install:homebrew
-      - task: brew:install
+      - task: brewfile:install
       - task: fresh-install:restore-mackup
       - task: install:oh-my-zsh
       - task: update-symlinks
