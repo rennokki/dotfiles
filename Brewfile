@@ -80,8 +80,8 @@ cask "font-jetbrains-mono"
 cask "font-hack-nerd-font"
 cask "font-terminus"
 
-brew "sfnt2woff"
-brew "sfnt2woff-zopfli"
+brew "bramstein/webfonttools/sfnt2woff"
+brew "bramstein/webfonttools/sfnt2woff-zopfli"
 
 # ------------------------------------------------------------
 # 📦 Essentials
@@ -130,7 +130,7 @@ cask "jordanbaird-ice"
 brew "gnupg"
 brew "gotify"
 
-cask "pingplace"
+cask "notwadegrimridge/brew/pingplace"
 cask "mqttx"
 
 cask "raycast",
@@ -432,7 +432,7 @@ brew "operator-sdk"
 brew "cncf/landscape2/landscape2"
 brew "speakeasy-api/tap/speakeasy"
 
-cask "kubewall"
+cask "kubewall/tap/kubewall"
 brew "kubeconform"
 cask "k6-studio"
 
