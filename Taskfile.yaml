@@ -50,7 +50,7 @@ tasks:
   fresh-install:xcode:
     desc: Install Xcode Command Line Tools.
     status:
-      - "! xcode-select -p &>/dev/null"
+      - "xcode-select -p &>/dev/null"
     internal: true
     ignore_error: true
     cmds:
