@@ -47,38 +47,42 @@ tasks:
           # Add `killall` tab completion for common apps
           complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
-  install:xcode:
+  fresh-install:xcode:
     desc: Install Xcode Command Line Tools.
     status:
       - "! xcode-select -p &>/dev/null"
     internal: true
+    ignore_error: true
     cmds:
       - echo "Xcode Command Line Tools not found. Installing..."
       - xcode-select --install
 
-  install:oh-my-zsh:
+  fresh-install:oh-my-zsh:
     desc: Install Oh My Zsh.
     status:
-      - "! command_exists omz"
+      - "command -v omz &>/dev/null"
     internal: true
     cmds:
       - echo "Oh My Zsh not found. Installing..."
       - /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
 
-  install:homebrew:
+  fresh-install:homebrew:
     desc: Install Homebrew.
     status:
-      - "! command_exists brew"
+      - "command -v brew &>/dev/null"
     internal: true
     cmds:
-      - echo "Homebrew not found. Installing..."
-      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-      - eval "$(/opt/homebrew/bin/brew shellenv)"
+      - |
+        if ! command -v brew &>/dev/null; then
+          echo "Homebrew not found. Installing..."
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+          eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
       - brew update
       - brew tap homebrew/bundle
 
-  restore:mackup:
+  fresh-install:restore-mackup:
     desc: Restore the Mackup configuration.
     cmds:
       - mackup restore
@@ -87,11 +91,11 @@ tasks:
     desc: Setup the dotfiles on a fresh machine.
     prompt: Are you sure you want to install the dotfiles on this fresh machine?
     cmds:
-      - task: install:xcode
-      - task: install:homebrew
-      - task: restore:mackup
-      - task: install:oh-my-zsh
+      - task: fresh-install:xcode
+      - task: fresh-install:homebrew
       - task: brew:install
+      - task: fresh-install:restore-mackup
+      - task: install:oh-my-zsh
       - task: update-symlinks
 
   clear:cache:
