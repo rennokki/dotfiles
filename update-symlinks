@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2154
 
+DOTFILES_DIR=$HOME/.dotfiles
+
 sync_home_file() {
     local mirrored_path="$1"
     echo "Syncing $mirrored_path to $HOME/$mirrored_path"
@@ -16,7 +18,7 @@ sync_zdotdir_file() {
 sync_home_dir() {
     local mirrored_path="$1"
     echo "Syncing $mirrored_path to $HOME/$mirrored_path"
-    ln -fs "$DOTFILES_DIR/_HOME/$mirrored_path/" "$HOME/$mirrored_path"
+    ln -s "$DOTFILES_DIR/_HOME/$mirrored_path/" "$HOME/$mirrored_path"
 }
 
 HOME_DIR_FILES=(

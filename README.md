@@ -11,8 +11,12 @@
    ```
 5. Ensure that Mackup synced the `~/.prefs-export` folder and then import the preferences:
    ```bash
-   pip install macprefs &&
+   pip install macprefs
    ```
+
+### Checklist
+
+TODO
 
 ## Common Tasks
 

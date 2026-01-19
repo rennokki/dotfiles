@@ -15,6 +15,7 @@ tasks:
   update:symlinks:
     desc: Update the symlinks for the dotfiles.
     prompt: Are you sure you want to update the symlinks?
+    ignore_error: true
     cmds:
       - chmod +x ./update-symlinks
       - ./update-symlinks
@@ -25,6 +26,13 @@ tasks:
       - task: update:symlinks
       - task: brewfile:install
 
+  # TODO
+  clear:cache:
+    desc: Clear the system cache.
+    cmds:
+      - pnpm cache delete
+      - npm cache clean --force
+  # TODO
   setup:autocompletions:
     cmds:
       - cmd: |
@@ -52,7 +60,6 @@ tasks:
     status:
       - "xcode-select -p &>/dev/null"
     internal: true
-    ignore_error: true
     cmds:
       - echo "Xcode Command Line Tools not found. Installing..."
       - xcode-select --install
@@ -68,24 +75,21 @@ tasks:
 
   fresh-install:homebrew:
     desc: Install Homebrew.
+    internal: true
     status:
       - "command -v brew &>/dev/null"
-    internal: true
     cmds:
-      - |
-        if ! command -v brew &>/dev/null; then
-          echo "Homebrew not found. Installing..."
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-          eval "$(/opt/homebrew/bin/brew shellenv)"
-        fi
+      - echo "Homebrew not found. Installing..."
+      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+      - eval "$(/opt/homebrew/bin/brew shellenv)"
       - brew update
       - brew tap homebrew/bundle
 
   fresh-install:restore-mackup:
     desc: Restore the Mackup configuration.
     cmds:
-      - mackup restore
+      - mackup restore --config-file=~/.mackup.cfg
 
   setup:fresh:
     desc: Setup the dotfiles on a fresh machine.
@@ -94,12 +98,6 @@ tasks:
       - task: fresh-install:xcode
       - task: fresh-install:homebrew
       - task: brewfile:install
+      - task: fresh-install:oh-my-zsh
+      - task: update:symlinks
       - task: fresh-install:restore-mackup
-      - task: install:oh-my-zsh
-      - task: update-symlinks
-
-  clear:cache:
-    desc: Clear the system cache.
-    cmds:
-      - pnpm cache delete
-      - npm cache clean --force
