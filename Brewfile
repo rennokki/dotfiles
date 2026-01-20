@@ -163,6 +163,7 @@ brew "bash-completion2"
 brew "zsh"
 brew "antidote"
 brew "powerlevel10k"
+brew "pygments"
 
 cask "tabby"
 

@@ -16,7 +16,30 @@
 
 ### Checklist
 
-TODO
+- [] Double check the apps that are not wanted using Pearcleaner
+- [] Connect to the iCloud accounts
+   - [] Google
+- [] Open apps to setup and configure permissions
+   - [] TGPro (optional)
+      - [] Activate license
+   - [] ICE
+   - [] Setapp
+      - [] Timing
+      - [] Spellar
+      - [] Proxyman
+   - [] Raycast
+   - [] Cursor
+   - [] KeepassXC
+   - [] Karabiner
+   - [] Slack
+   - [] Discord
+   - [] Notion
+      - [] Notion Calendar
+      - [] Notion Mail
+   - [] Obsidian
+   - [] Orbstack
+      - If the files are being broken, just reset using `orbctl reset`
+   - [] Keybase
 
 ## Common Tasks
 
