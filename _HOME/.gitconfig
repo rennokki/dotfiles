@@ -177,3 +177,6 @@
 
 [coderabbit]
 	machineId = cli/1ccfd16eb36141adabf530109be74faf
+
+[includeIf "gitdir:~/Desktop/DesignVerse"]
+    path = ~/.gitconfig.designverse

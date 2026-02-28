@@ -8,3 +8,8 @@ source "${HOME}/.aliases"
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/profile.post.bash" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/profile.post.bash"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/rennokki/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+

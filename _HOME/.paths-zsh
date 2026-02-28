@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# PHP & Composer
+prepend_to_path_if_dir_exists "${HOME}/.composer/vendor/bin"
+prepend_to_path_if_dir_exists "${HOME}/.asdf"
+prepend_to_path_if_dir_exists "${HOME}/Library/Application Support/Herd/bin"
+
+# Infrastructure
+prepend_to_path_if_dir_exists "${HOME}/.fly/bin"
+prepend_to_path_if_dir_exists "${HOME}/.spin/bin"
+
+# Node.js
+prepend_to_path_if_dir_exists "${HOME}/.node/bin"
+prepend_to_path_if_dir_exists "${HOME}/Library/pnpm"
+prepend_to_path_if_dir_exists "${HOME}/.bun/bin"
+
+# Golang
+prepend_to_path_if_dir_exists "${HOME}/go/bin"
+
+# Kubernetes
+prepend_to_path_if_dir_exists "${HOME}/.krew/bin"
+
+# Windsurf
+prepend_to_path_if_dir_exists "${HOME}/.codeium/windsurf/bin"
+
+# Use project specific binaries before global ones
+prepend_to_path_if_dir_exists "${HOME}/vendor/bin"
+prepend_to_path_if_dir_exists "${HOME}/node_modules/.bin"

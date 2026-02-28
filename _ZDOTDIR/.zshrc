@@ -194,6 +194,12 @@ append_to_path_if_dir_exists "${HOME}/.rd/bin"
 # Note: can't defer this since the first time install fails
 load_file_if_exists "${HOME}/.aliases"
 
+# Load paths
+load_file_if_exists "${HOME}/.paths-zsh"
+
+# Load completions
+load_file_if_exists "${HOME}/.completions-zsh"
+
 # erlang history in iex
 # export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 
@@ -371,8 +377,6 @@ manpath=( "${manpath[@]:#}" )
 # remove duplicates from some env vars
 typeset -gU cdpath CPPFLAGS cppflags FPATH fpath infopath LDFLAGS ldflags MANPATH manpath PATH path PKG_CONFIG_PATH
 
-load_file_if_exists "${HOME}/.completions-zsh"
-
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
@@ -391,3 +395,13 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/rennokki/Library/Application Support/Her
 
 # Herd injected PHP 8.5 configuration.
 export HERD_PHP_85_INI_SCAN_DIR="/Users/rennokki/Library/Application Support/Herd/config/php/85/"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/rennokki/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+
+# Shopify Hydrogen alias to local projects
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
+
+# opencode
+export PATH=/Users/rennokki/.opencode/bin:$PATH

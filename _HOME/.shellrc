@@ -24,6 +24,9 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
 
+# Directory for caching completion scripts (speeds up shell startup significantly)
+export ZSH_COMPLETION_CACHE_DIR="${XDG_CACHE_HOME}/zsh-completions"
+
 # Cache the architecture check to avoid calling `uname` repeatedly
 [[ -z "${ARCH}" ]] && export ARCH="$(uname -m)"
 export ARCHFLAGS="-arch ${ARCH}"
@@ -289,13 +292,44 @@ is_windows() {
   [[ "${OSTYPE}" =~ 'MINGW' ]]
 }
 
-# load_completion <command> "<completion>"
+# load_completion <command_name> <completion_generation_command>
+# Caches completion scripts to avoid regenerating on every shell startup.
+# Cache is invalidated when the command's version changes.
+# Example: load_completion "atmos" "atmos completion zsh"
 load_completion() {
   local cmd="$1"
-  local completion_cmd="$2"
+  local gen_cmd="${2}"
 
   if command_exists "${cmd}"; then
-    eval "$completion_cmd"
+    local cache_file="${ZSH_COMPLETION_CACHE_DIR}/_${cmd}"
+    local version_file="${ZSH_COMPLETION_CACHE_DIR}/${cmd}.version"
+
+    ensure_dir_exists "${ZSH_COMPLETION_CACHE_DIR}"
+
+    local current_version
+    current_version="$("${cmd}" --version 2>/dev/null | head -1)" || current_version="unknown"
+
+    local cached_version=""
+    is_file "${version_file}" && cached_version="$(<"${version_file}")" || cached_version="unknown"
+
+    # Regenerate cache if missing or version changed
+    if ! is_file "${cache_file}" || [[ "${current_version}" != "${cached_version}" ]]; then
+      eval "${gen_cmd}" > "${cache_file}" 2>/dev/null
+      echo "${current_version}" > "${version_file}"
+    fi
+
+    # shellcheck disable=SC1090
+    source "${cache_file}"
+  fi
+}
+
+# regenerate_all_completions - Forces regeneration of all cached completions
+regenerate_all_completions() {
+  if is_directory "${ZSH_COMPLETION_CACHE_DIR}"; then
+    rm -rf "${ZSH_COMPLETION_CACHE_DIR}"
+    success "Cleared completion cache at '$(yellow "${ZSH_COMPLETION_CACHE_DIR}")'. Completions will regenerate on next shell startup."
+  else
+    warn "No completion cache found at '$(yellow "${ZSH_COMPLETION_CACHE_DIR}")'"
   fi
 }
 

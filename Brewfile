@@ -2,7 +2,6 @@
 
 # set global preferences for all 'brew install' commands
 cask_args appdir: '/Applications', fontdir: '/Library/Fonts', no_quarantine: true, adopt: true
-
 # Taps
 tap "romkatv/powerlevel10k"
 tap "borgbackup/tap"
@@ -116,6 +115,7 @@ brew "tlrc"
 brew "htop"
 brew "yq"
 brew "jq"
+brew "fzf"
 brew "ack" # https://beyondgrep.com/
 brew "pkgconf"
 brew "pkg-config" # https://github.com/driesvints/dotfiles/issues/20
@@ -307,6 +307,7 @@ brew "semgrep"
 brew "trivy"
 brew "checkov"
 brew "shellcheck"
+brew "mise"
 
 cask "trunk-io"
 cask "httpie-desktop"
@@ -410,6 +411,7 @@ cask "orbstack"
 brew "kubernetes-cli"
 brew "krew"
 brew "kustomize"
+brew "kubectx"
 
 # Knative
 brew "knative-extensions/kn-plugins/func"
@@ -445,6 +447,9 @@ brew "ssllabs-scan"
 brew "sniffnet"
 brew "blacktop/tap/ipsw"
 
+# Networking
+brew "mitmproxy"
+
 # Secret Vaults
 brew "hashicorp/tap/vault"
 brew "bitwarden-cli"
@@ -471,6 +476,7 @@ cask "obsidian"
 # VPNs
 brew "cloudflared"
 brew "jzelinskie/duckdns/duckdns"
+brew "dnsmasq", restart_service: :changed
 
 cask "tailscale-app"
 

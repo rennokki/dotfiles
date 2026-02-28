@@ -25,6 +25,7 @@ HOME_DIR_FILES=(
     ".aliases"
     ".completions-bash"
     ".completions-zsh"
+    ".paths-zsh"
     ".bash_profile"
     ".bashrc"
     ".curlrc"
@@ -54,9 +55,10 @@ ZDOTDIR_FILES=(
     ".zshenv"
 )
 
+# TODO: Add support for these directories.
 DIRS=(
-    ".heptapod/rules"
-    ".mackup"
+    # ".heptapod/rules"
+    # ".mackup"
 )
 
 for file in "${HOME_DIR_FILES[@]}"; do
@@ -73,6 +75,9 @@ sync_home_file ".ssh/config.local"
 
 # Karabiner
 sync_home_file ".config/karabiner/karabiner.json"
+
+# Mise
+sync_home_file ".config/mise/config.toml"
 
 # Orbstack
 sync_home_file ".orbstack/config/docker.json"
